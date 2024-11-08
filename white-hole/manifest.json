@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "White Hole",
+  "version": "1.0.0",
+  "background": {
+    "service_worker": "service_worker.js",
+    "type": "module"
+  },
+  "action": {},
+  "permissions": ["scripting"],
+  "host_permissions": ["<all_urls>"]
+}
