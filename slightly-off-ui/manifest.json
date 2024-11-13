@@ -6,6 +6,12 @@
     "service_worker": "service_worker.js",
     "type": "module"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["slightlyOffUI.js"]
+    }
+  ],
   "action": {},
   "permissions": ["scripting"],
   "host_permissions": ["<all_urls>"]

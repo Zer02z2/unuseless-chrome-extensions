@@ -7,7 +7,7 @@ const elements = Array.from(elementsNodes)
 
 elements.forEach((element) => {
   const scale = element.style.scale ? element.style.scale : 1
-  const factor = random(0.98, 1.02)
+  const factor = random(0.95, 1.05)
   const newScale = scale * factor
   element.style.scale = newScale
 
