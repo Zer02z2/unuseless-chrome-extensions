@@ -1,7 +1,8 @@
-const fetchEmbedding = async (input) => {
+const fetchEmbedding = async (input, length) => {
   const url = "http://localhost:3001/undnet/textUmap"
   const data = {
     text_batch: input,
+    length: length,
   }
   const options = {
     method: "POST",
@@ -21,7 +22,8 @@ const fetchEmbedding = async (input) => {
   }
 }
 
-const batch = ["hi", "no"]
+const batch = ["hi", "no", "water"]
+const length = batch.length
 const input = JSON.stringify(batch)
 console.log(input)
-fetchEmbedding(input)
+fetchEmbedding(input, length)
