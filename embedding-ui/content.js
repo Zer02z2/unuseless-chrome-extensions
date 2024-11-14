@@ -37,9 +37,11 @@ const elements = Array.from(elementsNodes)
 
 const textElements = elements.filter((element) => {
   const childNodes = element.childNodes
-  return Array.from(childNodes).some(
-    (child) =>
-      child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""
+  return (
+    Array.from(childNodes).some(
+      (child) =>
+        child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""
+    ) && element.tagName.toLowerCase() !== "script"
   )
 })
 const textMap = textElements.map((element) => {
@@ -49,10 +51,24 @@ const textMap = textElements.map((element) => {
     .replace(/[^\w\s.,!?-]/g, "")
     .replace(/\s([.,!?-])/g, "$1")
     .replace(/\s+/g, " ")
-  return { element: element, text: text }
+  return { element: element, text: text, width: 0, height: 0 }
 })
 const filteredTextMap = textMap.filter((item) => item.text.trim() !== "")
 const chosenTextMap = getRandomElements(filteredTextMap, 100)
+chosenTextMap.forEach((instance) => {
+  const element = instance.element
+  const rect = element.getBoundingClientRect()
+  const width = rect.width
+  const height = rect.height
+  const clone = element.cloneNode(true)
+  clone.style.position = "absolute"
+  clone.style.display = "block"
+  clone.style.width = width
+  clone.style.height = height
+  instance.element = clone
+  instance.width = width
+  instance.height = height
+})
 
 const init = async () => {
   const length = chosenTextMap.length
@@ -65,29 +81,18 @@ const init = async () => {
   })
   const padding = 200
   const fullHeight = document.body.scrollHeight - padding * 2
-  const fullWidth = document.body.scrollWidth - padding * 2
-
-  const newElements = map.map((instance) => {
-    const element = instance.src.element
-    console.log(element)
-    const rect = element.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-    const x = instance.vector[0] * fullWidth + padding - width / 2
-    const y = instance.vector[1] * fullHeight + padding - height / 2
-    element.style.position = "absolute"
-    element.style.display = "block"
-    element.style.width = width
-    element.style.height = height
-    element.style.left = `${x}px`
-    element.style.top = `${y}px`
-    const clone = element.cloneNode(true)
-    return clone
-  })
+  const fullWidth = window.innerWidth - padding * 2
 
   elements.forEach((div) => div.remove())
   document.body.style.position = "relative"
-  newElements.forEach((element) => {
+  map.forEach((instance) => {
+    const element = instance.src.element
+    const width = instance.src.width
+    const height = instance.src.height
+    const x = instance.vector[0] * fullWidth + padding - width / 2
+    const y = instance.vector[1] * fullHeight + padding - height / 2
+    element.style.left = `${x}px`
+    element.style.top = `${y}px`
     document.body.appendChild(element)
   })
 }
