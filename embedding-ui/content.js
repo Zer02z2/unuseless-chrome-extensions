@@ -16,6 +16,7 @@ const fetchEmbedding = async (input, length) => {
     console.log("start fetching")
     const response = await fetch(url, options)
     const parsedResponse = await response.json()
+    console.log(parsedResponse)
     return parsedResponse
   } catch (error) {
     console.log(error)
@@ -41,7 +42,9 @@ const textElements = elements.filter((element) => {
     Array.from(childNodes).some(
       (child) =>
         child.nodeType === Node.TEXT_NODE && child.textContent.trim() !== ""
-    ) && element.tagName.toLowerCase() !== "script"
+    ) &&
+    element.innerText &&
+    element.tagName.toLowerCase() !== "script"
   )
 })
 const textMap = textElements.map((element) => {
@@ -71,6 +74,7 @@ chosenTextMap.forEach((instance) => {
 })
 
 const init = async () => {
+  console.log(chosenTextMap)
   const length = chosenTextMap.length
   const input = JSON.stringify(chosenTextMap.map((item) => item.text))
   const umap = await fetchEmbedding(input, length)
@@ -83,7 +87,7 @@ const init = async () => {
   const fullHeight = document.body.scrollHeight - padding * 2
   const fullWidth = window.innerWidth - padding * 2
 
-  elements.forEach((div) => div.remove())
+  Array.from(document.body.querySelectorAll("*")).forEach((div) => div.remove())
   document.body.style.position = "relative"
   map.forEach((instance) => {
     const element = instance.src.element
@@ -95,6 +99,12 @@ const init = async () => {
     element.style.top = `${y}px`
     document.body.appendChild(element)
   })
+}
+
+const disappear = async () => {
+  const scale = 1
+  const increment = 0.02
+  while (scale > 0) {}
 }
 
 init()
