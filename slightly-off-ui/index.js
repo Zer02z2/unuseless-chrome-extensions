@@ -5,3 +5,6 @@ const init = async () => {
     func: () => {},
   })
 }
+
+document.body.style.color = "blue"
+console.log("hi")
