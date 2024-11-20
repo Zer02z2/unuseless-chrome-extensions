@@ -5,9 +5,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["injectTag.js", "content.js"]
     }
   ],
-  "permissions": ["scripting"],
-  "host_permissions": ["<all_urls>"]
+  "permissions": ["<all_urls>"],
+  "web_accessible_resources": ["content.js"]
 }
