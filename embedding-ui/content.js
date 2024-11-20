@@ -1,5 +1,5 @@
 const fetchEmbedding = async (input, length) => {
-  const url = "http://localhost:3001/undnet/textUmap"
+  const url = "https://io.zongzechen.com/undnet/textUmap/"
   const data = {
     text_batch: input,
     length: length,
