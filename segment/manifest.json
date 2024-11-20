@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Body segment on any website",
   "version": "1.0.0",
   "content_scripts": [
