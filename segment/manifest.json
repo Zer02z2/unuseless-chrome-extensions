@@ -5,9 +5,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["injectTag.js", "bodyWHand.js"]
+      "js": ["injectTag.js", "content.js"]
     }
   ],
   "permissions": ["<all_urls>"],
-  "web_accessible_resources": ["bodyWHand.js"]
+  "web_accessible_resources": ["content.js"]
 }
