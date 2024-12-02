@@ -5,5 +5,5 @@ window.trustedTypes.createPolicy("default", {
 })
 
 const contentScript = document.createElement("script")
-contentScript.src = chrome.extension.getURL("content.js")
+contentScript.src = chrome.extension.getURL("bodyWHand.js")
 ;(document.head || document.documentElement).appendChild(contentScript)
