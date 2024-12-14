@@ -9,5 +9,13 @@
     }
   ],
   "permissions": ["<all_urls>"],
-  "web_accessible_resources": ["bodyWHand.js"]
+  "web_accessible_resources": [
+    "bodyWHand.js",
+    "body-seg-model/model.json",
+    "body-seg-model/group1-shard1of1.bin",
+    "hand-detector-model/model.json",
+    "hand-detector-model/group1-shard1of1.bin",
+    "hand-landmark-model/model.json",
+    "hand-landmark-model/group1-shard1of1.bin"
+  ]
 }
