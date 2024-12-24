@@ -16,6 +16,8 @@
     "hand-detector-model/model.json",
     "hand-detector-model/group1-shard1of1.bin",
     "hand-landmark-model/model.json",
-    "hand-landmark-model/group1-shard1of1.bin"
+    "hand-landmark-model/group1-shard1of1.bin",
+    "/@mediapipe/hands/*",
+    "/@mediapipe/selfie_segmentation/*"
   ]
 }
