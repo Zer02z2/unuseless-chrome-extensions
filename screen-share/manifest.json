@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Screen share",
+  "author": "Zongze Chen",
   "version": "1.0.0",
   "content_scripts": [
     {
