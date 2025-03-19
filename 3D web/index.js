@@ -5,7 +5,7 @@ const updateMessage = (data, value) => {
       data[tab.id] = { value: value }
       console.log(data)
       chrome.storage.local.set({ data: data })
-      chrome.tabs.sendMessage(tab.id, { action: "dataChanged" })
+      chrome.tabs.sendMessage(tab.id, { action: "dataChanged", value: value })
     })
   })
 }
